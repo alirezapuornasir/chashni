@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#173d32"/>
+  <circle cx="300" cy="190" r="135" fill="#f5e8cf"/>
+  <circle cx="300" cy="190" r="105" fill="#e9844c"/>
+  <path d="M240 190 Q300 100 360 190 Q300 280 240 190"
+        fill="#f5e8cf"/>
+  <text x="300" y="355" text-anchor="middle"
+        fill="#f5e8cf" font-size="30"
+        font-family="Arial">CHASHNI</text>
+</svg>
