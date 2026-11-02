@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173d32">
+  <meta name="description" content="چاشنی؛ آشپزخانه هوشمند برای کشف دستور پخت، مدیریت مواد یخچال، برنامه‌ریزی غذا و ساخت دستورهای شخصی.">
+  <title>چاشنی | آشپزخانه هوشمند</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement"><span class="pulse-dot"></span> هرچی توی یخچالت هست، تبدیلش کن به یک غذای خوشمزه <span class="announcement-spark">✦</span></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="چاشنی، صفحه اصلی">
+      <img src="assets/logo.svg" alt="" class="brand-mark">
+      <span class="brand-copy"><strong>چاشنی</strong><small>آشپزخانه هوشمند</small></span>
+    </a>
+    <nav class="main-nav" aria-label="ناوبری اصلی">
+      <a href="#discover" class="nav-link active">کشف غذا</a>
+      <a href="#pantry" class="nav-link">با مواد من</a>
+      <a href="#collection" class="nav-link">دستورها</a>
+      <a href="#planner" class="nav-link">برنامه غذایی</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="shoppingOpen" aria-label="لیست خرید" title="لیست خرید">🛒<span class="count-badge" id="shoppingCount">0</span></button>
+      <button class="btn btn-primary btn-small" id="addRecipeOpen"><span>＋</span> ثبت دستور</button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="باز کردن منو">☰</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" id="discover">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="eyebrow light"><span class="eyebrow-line"></span> دنیای خوشمزه‌ها، یک‌جا</div>
+        <h1>امروز چی<br><em>بپزیم؟</em></h1>
+        <p>از یک غذای اصیل ایرانی تا دسرهای ترند دنیا؛ چیزی که دنبالش هستی را پیدا کن، یا با مواد داخل یخچالت یک ایده تازه بساز.</p>
+        <form class="hero-search" id="searchForm">
+          <span class="search-symbol">⌕</span>
+          <input id="searchInput" type="search" placeholder="اسم غذا، دسر یا ماده غذایی رو بنویس..." autocomplete="off" aria-label="جستجوی دستور غذا">
+          <button type="submit" class="btn btn-primary">جستجو <span>←</span></button>
+        </form>
+        <div class="hero-search-options">
+          <button class="text-action" type="button" id="onlineSearchBtn">🌐 جستجو در دستورهای آنلاین</button>
+          <span>پیشنهادهای محبوب: <button class="suggestion" data-search="موچی">موچی</button>، <button class="suggestion" data-search="پاستا">پاستا</button>، <button class="suggestion" data-search="چیزکیک">چیزکیک</button></span>
+        </div>
+        <div class="hero-metrics">
+          <div><strong>۳۰+</strong><span>دستور شروع</span></div>
+          <div><strong>۶</strong><span>دسته‌بندی متنوع</span></div>
+          <div><strong>∞</strong><span>دستور شخصی تو</span></div>
+        </div>
+      </div>
+      <div class="hero-sticker"><span>امتحانش کن!</span><strong>😋</strong><small>خوشمزه‌تر از همیشه</small></div>
+      <div class="hero-bottom-note"><span>✳</span> الهام برای آشپزی هر روز</div>
+    </section>
+
+    <section class="quick-strip section-wrap" aria-label="میانبرها">
+      <button class="quick-item" data-category="iranian"><span class="quick-emoji">🍲</span><span><strong>غذاهای ایرانی</strong><small>طعم خونه</small></span><b>←</b></button>
+      <button class="quick-item" data-category="fastfood"><span class="quick-emoji">🍔</span><span><strong>فست‌فود خانگی</strong><small>خوشمزه و هیجان‌انگیز</small></span><b>←</b></button>
+      <button class="quick-item" data-category="dessert"><span class="quick-emoji">🍰</span><span><strong>دسر و شیرینی</strong><small>برای لحظه‌های شیرین</small></span><b>←</b></button>
+      <button class="quick-item" data-category="drink"><span class="quick-emoji">🥤</span><span><strong>نوشیدنی‌ها</strong><small>خنک و متفاوت</small></span><b>←</b></button>
+    </section>
+
+    <section class="section-wrap pantry-section" id="pantry">
+      <div class="section-heading pantry-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> آشپزی هوشمند</div><h2>با مواد <em>من</em> چی بپزم؟</h2><p>مواد داخل یخچال و کابینتت رو وارد کن؛ چاشنی بر اساس مواد موجود بهت ایده می‌ده.</p></div>
+        <div class="pantry-illustration" aria-hidden="true">🥑<span>🥕</span><b>🍅</b></div>
+      </div>
+      <div class="pantry-card">
+        <div class="pantry-input-row">
+          <div class="pantry-input-wrap"><span>＋</span><input id="pantryInput" type="text" placeholder="مثلاً: تخم‌مرغ، سیب‌زمینی، پنیر، مرغ..." autocomplete="off"><button id="addPantryItem" type="button">افزودن</button></div>
+          <button class="clear-link" type="button" id="clearPantry">پاک کردن همه</button>
+        </div>
+        <div class="pantry-chips" id="pantryChips"><span class="empty-hint">هنوز ماده‌ای اضافه نکردی.</span></div>
+        <div class="equipment-row">
+          <div class="equipment-label"><strong>وسایل در دسترس</strong><small>برای پیشنهاد دقیق‌تر انتخاب کن</small></div>
+          <div class="equipment-options" id="equipmentOptions">
+            <button type="button" class="equipment-chip" data-equipment="اجاق">🔥 اجاق</button>
+            <button type="button" class="equipment-chip" data-equipment="فر">♨️ فر</button>
+            <button type="button" class="equipment-chip" data-equipment="هواپز">🌀 هواپز</button>
+            <button type="button" class="equipment-chip" data-equipment="مایکروویو">📡 مایکروویو</button>
+            <button type="button" class="equipment-chip" data-equipment="مخلوط‌کن">🥤 مخلوط‌کن</button>
+            <button type="button" class="equipment-chip" data-equipment="همزن">🧁 همزن</button>
+            <button type="button" class="equipment-chip" data-equipment="غذاساز">⚙️ غذاساز</button>
+          </div>
+        </div>
+        <div class="pantry-footer"><span class="privacy-note">🔒 موادت فقط در همین مرورگر ذخیره می‌شن.</span><button class="btn btn-dark" id="findFromPantry" type="button">پیشنهاد غذا بده <span>←</span></button></div>
+      </div>
+      <div class="pantry-results" id="pantryResults" hidden></div>
+    </section>
+
+    <section class="section-wrap trends-section" id="trends">
+      <div class="section-heading heading-inline">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> چیزهایی که ارزش امتحان کردن دارن</div><h2>داغ و <em>محبوب</em></h2><p>منتخب دستورهای پرطرفدار و ایده‌های جذاب برای آشپزی امروز.</p></div>
+        <a class="underlink" href="#collection" data-show-all>دیدن همه دستورها <span>←</span></a>
+      </div>
+      <div class="recipe-grid trend-grid" id="trendGrid"></div>
+      <p class="editorial-note">نکته: این بخش در نسخه فعلی شامل منتخب‌های داخلی برنامه است؛ رتبه‌بندی زنده شبکه‌های اجتماعی نیست.</p>
+    </section>
+
+    <section class="category-band">
+      <div class="section-wrap category-inner">
+        <div><div class="eyebrow light"><span class="eyebrow-line"></span> هر سلیقه‌ای، یک انتخاب</div><h2>با حال‌وهوای <em>امروزت</em> انتخاب کن</h2></div>
+        <div class="category-pills" id="categoryPills"></div>
+      </div>
+    </section>
+
+    <section class="section-wrap collection-section" id="collection">
+      <div class="section-heading heading-inline collection-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> کتابخانه آشپزی تو</div><h2>دستورهای <em>خوشمزه</em></h2><p>جستجو کن، فیلتر بزن و دستور بعدی‌ات رو پیدا کن.</p></div>
+        <div class="collection-controls"><label class="select-wrap"><span>مرتب‌سازی</span><select id="sortSelect"><option value="recommended">پیشنهادی</option><option value="quick">سریع‌ترین</option><option value="easy">آسان‌ترین</option><option value="popular">محبوب‌ترین</option></select></label><button class="filter-toggle" id="favoritesFilter">♡ فقط علاقه‌مندی‌ها</button></div>
+      </div>
+      <div class="filter-row" id="filterRow"></div>
+      <div class="results-meta"><span id="resultsCount">در حال آماده‌سازی...</span><button class="clear-link" id="resetFilters" type="button">حذف فیلترها</button></div>
+      <div class="recipe-grid" id="recipeGrid"></div>
+      <div class="no-results" id="noResults" hidden><span>🍽️</span><strong>چیزی پیدا نکردیم!</strong><p>عبارت جستجو یا فیلترها رو تغییر بده.</p><button class="btn btn-outline" id="noResultsReset">نمایش همه دستورها</button></div>
+      <div class="load-more-wrap"><button class="btn btn-outline" id="loadMoreBtn" hidden>نمایش دستورهای بیشتر <span>↓</span></button></div>
+    </section>
+
+    <section class="section-wrap planner-section" id="planner">
+      <div class="planner-card">
+        <div class="planner-copy"><div class="eyebrow light"><span class="eyebrow-line"></span> کمتر فکر کن، بهتر برنامه‌ریزی کن</div><h2>برای هفته‌ات<br><em>خوشمزه برنامه‌ریزی کن.</em></h2><p>غذاهایی که دوست داری رو برای روزهای هفته بچین و برای خرید آماده باش.</p><button class="btn btn-light" id="openPlanner">برنامه غذایی من <span>←</span></button></div>
+        <div class="planner-art" aria-hidden="true"><div class="plate">🍛</div><span class="art-leaf leaf-one">✦</span><span class="art-leaf leaf-two">✿</span><span class="art-leaf leaf-three">✧</span></div>
+      </div>
+      <div class="week-preview" id="weekPreview"></div>
+    </section>
+
+    <section class="section-wrap features-section">
+      <div class="section-heading centered"><div class="eyebrow"><span class="eyebrow-line"></span> چاشنی چه کار می‌کنه؟</div><h2>فقط یک دفتر دستور <em>نیست</em></h2><p>ابزارهایی برای اینکه از ایده تا بشقاب، راحت‌تر پیش بری.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-icon mint">🧠</span><h3>پیشنهاد با مواد موجود</h3><p>مواد اولیه و وسایلت رو وارد کن و غذاهای قابل‌تهیه رو ببین.</p></article>
+        <article class="feature-card"><span class="feature-icon peach">📝</span><h3>دفتر دستور شخصی</h3><p>دستورهای خودت رو ثبت کن، ویرایش کن و برای همیشه در مرورگرت نگه دار.</p></article>
+        <article class="feature-card"><span class="feature-icon yellow">🛒</span><h3>لیست خرید هوشمند</h3><p>مواد لازم هر دستور رو یک‌جا جمع کن و هنگام خرید تیک بزن.</p></article>
+        <article class="feature-card"><span class="feature-icon lilac">📅</span><h3>برنامه هفتگی</h3><p>برای هر روز غذا انتخاب کن تا تصمیم‌گیری هر شب سخت نباشه.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-wrap footer-inner"><a class="brand footer-brand" href="#home"><img src="assets/logo.svg" alt="" class="brand-mark"><span class="brand-copy"><strong>چاشنی</strong><small>آشپزخانه هوشمند</small></span></a><p>با عشق بپز؛ با چاشنی کشف کن. <span>♥</span></p><div class="footer-links"><a href="#discover">کشف غذا</a><a href="#pantry">مواد من</a><a href="#collection">دستورها</a><a href="README.md">راهنما</a></div></div>
+    <div class="footer-bottom">© <span id="currentYear"></span> چاشنی — ساخته‌شده برای عاشقان غذا</div>
+  </footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <section class="modal-shell" id="modalShell" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="بستن">×</button><div id="modalContent"></div></section>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

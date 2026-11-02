@@ -1,0 +1,16 @@
+{
+  "name": "چاشنی | آشپزخانه هوشمند",
+  "short_name": "چاشنی",
+  "description": "کشف دستور غذا، مدیریت مواد اولیه، ساخت دستور شخصی و برنامه‌ریزی هفتگی غذا",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfaf6",
+  "theme_color": "#173d32",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
